@@ -1,0 +1,51 @@
+﻿<Window x:Class="gstreamer_shuffleboard_installer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="Installer" Height="440" Width="600">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
+		<TextBlock Grid.Column="0" Grid.Row="0" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Top">
+			<TextBlock.Inlines>
+				<Run FontWeight="Bold" Text="{Binding TitleLabel, Mode=OneWay}" />
+			</TextBlock.Inlines>
+		</TextBlock>
+
+		<TextBlock Grid.Column="0" Grid.Row="1" FontSize="18" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"  VerticalAlignment="Top">
+				   This installer will download GStreamer and install it prior to installing gstreamer_shuffleboard. If you are on restricted data, please download
+			<Hyperlink 
+				NavigateUri="!"
+				RequestNavigate="Hyperlink_RequestNavigate">
+				this
+			</Hyperlink>
+			file and place it in the same folder as the installer.
+			
+			<LineBreak/><LineBreak/>
+			Note: Manually configuring the installer will work due to enviroment variables, but is not recommended.
+		</TextBlock>
+		<Button Content="Download" Grid.Column="0" Grid.Row="2" Height="40" Width="80" HorizontalAlignment="Center" VerticalAlignment="Top" Click="StartDownload"/>
+		<Label Name="DownloadInfo" Content="0 out of 0 bytes downloaded" Grid.Column="0" Grid.Row="3" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+		<ComboBox Name="InstallOptionsGStreamer" SelectedIndex="0" Grid.Row="4" FontSize="18" HorizontalAlignment="Center" Height="32" Width="220" VerticalAlignment="Center" >
+			<ComboBoxItem Content="With GStreamer" VerticalAlignment="Center"/>
+			<ComboBoxItem Content="Without GStreamer" VerticalAlignment="Center"/>
+		</ComboBox>
+		<ComboBox Name="InstallOptionsAutomatic" SelectedIndex="0" Grid.Row="5" FontSize="18" HorizontalAlignment="Center" Height="32" Width="220" VerticalAlignment="Center" >
+			<ComboBoxItem Content="Automatically Install" VerticalAlignment="Center"/>
+			<ComboBoxItem Content="Manually Configure" VerticalAlignment="Center"/>
+		</ComboBox>
+		<Button Content="Install" Grid.Column="0" Grid.Row="6" Height="40" Width="80" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click_1"/>
+		<TextBlock Text="This installer was built in a day. Please excuse the utilitarian design." Grid.Column="0" Grid.Row="7" FontSize="18" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"  VerticalAlignment="Top"/>
+	</Grid>
+</Window>
