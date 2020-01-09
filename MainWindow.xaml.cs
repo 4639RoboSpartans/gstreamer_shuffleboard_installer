@@ -50,7 +50,7 @@ namespace gstreamer_shuffleboard_installer
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Process.Start(GStreamerExeName);
+            Process.Start(GStreamerExeDownload);
         }
 
         private void StartDownload(object sender, RoutedEventArgs e)
@@ -79,7 +79,7 @@ namespace gstreamer_shuffleboard_installer
         {
             if (InstallOptionsGStreamer.SelectedIndex == 0)
             {
-                if (!File.Exists(Properties.Resources.ShuffleboardJarName))
+                if (!File.Exists(GStreamerExeName))
                 {
                     MessageBox.Show(this, "GStreamer Exe Not Downloaded!", "Installer");
                     return;
